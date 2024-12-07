@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .image-container {
+            display: inline-block;
+            border: 2px solid #ccc;
+            padding: 10px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .summary {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #555;
+        }
+        .back-button {
+            margin-top: 20px;
+        }
+        .back-button a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-button a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Detection Results</h1>
+
+    <div class="image-container">
+        <!-- Display the processed image -->
+        <img src="{{ url_for('uploaded_file', filename=filename) }}" alt="Processed Image">
+    </div>
+    
+
+    <div class="summary">
+        <p>Total People Detected: {{ total_people }}</p>
+        <p>Safe: {{ num_safe }}</p>
+        <p>Partially Safe: {{ num_partially_safe }}</p>
+        <p>Not Safe: {{ num_not_safe }}</p>
+    </div>
+
+    <div class="back-button">
+        <!-- Button to go back to the upload page -->
+        <a href="{{ url_for('upload_file') }}">Upload Another File</a>
+    </div>
+
+</body>
+</html>
